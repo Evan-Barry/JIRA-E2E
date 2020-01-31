@@ -8,8 +8,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'sudo apt install python3-pip'
-                sh 'python3 JIRA-E2E.py'
+                python3 JIRA-E2E.py
             }
         }
     }
