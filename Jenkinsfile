@@ -8,12 +8,7 @@ pipeline {
                 }
             }
             steps {
-                withPythonEnv('python'){
-                sh 'pip install requests'
                 sh 'python ./JIRA-E2E.py'
-            }
-                sh 'pwd'
-            }
         }
     }
 }
