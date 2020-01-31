@@ -9,6 +9,7 @@ pipeline {
             }
             steps {
                 sh 'python ./JIRA-E2E.py'
+                sh 'pwd'
             }
         }
     }
