@@ -3,9 +3,9 @@ import json
 import sys
 
 issue_id = "EEJ-1"  # test placeholder
-# id = sys.argv[1] #works with argument passed in
+#issue_id = sys.argv[1] #works with argument passed in
 url = "http://localhost:8080/rest/api/2/issue/"  # must get JIRA address from jenkins?
-save_path = "/home/fexco.ie/evbarry/JIRA-E2E/"
+save_path = ""
 headers = {
         'Authorization': 'Basic dDAwMjAyMzc2OjVlOWQ5eWt5'  # must have proper authentication? OAUTH
     }
