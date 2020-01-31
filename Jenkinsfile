@@ -8,7 +8,7 @@ pipeline {
                 }
             }
             steps {
-                python3 JIRA-E2E.py
+                sh 'python ./JIRA-E2E.py'
             }
         }
     }
