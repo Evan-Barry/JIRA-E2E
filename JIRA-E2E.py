@@ -5,7 +5,7 @@
 # issue_id = "EEJ-1"  # test placeholder
 # #issue_id = sys.argv[1] #works with argument passed in
 # url = "http://localhost:8080/rest/api/2/issue/"  # must get JIRA address from jenkins?
-# save_path = ""
+save_path = ""
 # headers = {
 #         'Authorization': 'Basic dDAwMjAyMzc2OjVlOWQ5eWt5'  # must have proper authentication? OAUTH
 #     }
@@ -39,19 +39,22 @@
 #     return "Feature: " + dataJIRA_feature + "\n\n" + dataJIRA_subtasks_description #construct text for file
 #
 #
-# def file_creater():
-#     featureName = dataJIRA_feature.replace(" ", "")  # remove spaces from feature title
-#     featureName = featureName[0].lower() + featureName[1:]  # make first letter of feature name lowercase
-#
-#     fileName = featureName + ".feature"  # construct file name
-#
-#     e2eFile = open(save_path + fileName, "w+")  # open/create file with path and file name
-#
-#     e2eFile.write(e2eText)  # write to file
-#
-#     e2eFile.close()  # close file
-#
-#
+
+
+def file_creater():
+    #featureName = dataJIRA_feature.replace(" ", "")  # remove spaces from feature title
+    #featureName = featureName[0].lower() + featureName[1:]  # make first letter of feature name lowercase
+
+    #fileName = featureName + ".feature"  # construct file name
+
+    #e2eFile = open(save_path + fileName, "w+")  # open/create file with path and file name
+    e2eFile = open(save_path + "test.txt", 'w+')
+
+    e2eFile.write("test")  # write to file
+
+    e2eFile.close()  # close file
+
+
 # dataJIRA = get_api_response() #converts text to JSON
 #
 # dataJIRA_feature = dataJIRA['fields']['summary'] #gets feature title
@@ -65,6 +68,6 @@
 #
 # e2eText = feature_file_formatter()
 #
-# file_creater()
+file_creater()
 
 print("Hello World")
