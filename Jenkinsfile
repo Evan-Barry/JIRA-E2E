@@ -3,9 +3,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                withPythonEnv('python') {
-                    pysh 'python ./JIRA-E2E.py'
-                }
+                sh 'python3 -m pip install --user --upgrade pip'
+
+                //sh 'python -m pip install requests'
+                //sh 'python ./JIRA-E2E.py'
             }
         }
     }
