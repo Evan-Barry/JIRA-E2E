@@ -45,9 +45,8 @@ def file_creater():
     fileName = featureName + ".feature"  # construct file name
 
     e2eFile = open(save_path + fileName, "w+")  # open/create file with path and file name
-    e2eFile = open(save_path + "test.txt", 'w+')
 
-    e2eFile.write("test")  # write to file
+    e2eFile.write(e2eText)  # write to file
 
     e2eFile.close()  # close file
 
