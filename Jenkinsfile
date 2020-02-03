@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'python -m pip install --user --upgrade pip'
-                sh 'python -m pip venv env'
-                sh 'python -m venv env'
-                sh 'source env/bin/activate'
-                sh 'pip install requests'
+                pysh 'python -m pip install --user --upgrade pip'
+                pysh 'python -m pip venv env'
+                pysh 'python -m venv env'
+                pysh 'source env/bin/activate'
+                pysh 'pip install requests'
 
                 //sh 'python -m pip install requests'
-                sh 'python ./JIRA-E2E.py'
+                pysh 'python ./JIRA-E2E.py'
             }
         }
     }
