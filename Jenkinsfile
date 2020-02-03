@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                pysh 'pip install requests'
+                pysh 'pip install --user requests'
 
                 //sh 'python -m pip install requests'
                 pysh 'python ./JIRA-E2E.py'
