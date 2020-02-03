@@ -3,6 +3,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                script {
+                    docker.build registry + ":$BUILD_NUMBER"
+                }
                 //sh 'python3 -m venv env'
                 //sh 'virtualenv venv --distribute'
                 //sh 'python -m pip install requests'
