@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'pip install requests'
+                sh 'python3 -m venv env'
+                sh 'source ./env/bin/activate'
+                sh 'python -m pip install requests'
                 sh 'python ./JIRA-E2E.py'
             }
         }
