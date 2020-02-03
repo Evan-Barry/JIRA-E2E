@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'evan-barry/jira-e2e'}}
+    agent { docker { image 'python:3.6-slim'}}
     stages {
         stage('Build') {
             steps {
