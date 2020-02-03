@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'b49928f58040'}}
+    agent { docker { image 'evan-barry/jira-e2e'}}
     stages {
         stage('Build') {
             steps {
