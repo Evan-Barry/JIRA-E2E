@@ -3,11 +3,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                pysh 'virtualenv env -p python3
+                pysh """virtualenv env -p python3
                 source env/bin/activate
                 pip install --upgrade pip
                 pip install --user requests
-                python ./JIRA-E2E.py'
+                python ./JIRA-E2E.py"""
             }
         }
     }
