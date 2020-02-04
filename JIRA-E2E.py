@@ -47,7 +47,7 @@ def retrieve_scenario_text():
 
 
 def feature_file_formatter():
-    return "Feature: " + feature_name_format() + "\n\n" + dataJIRA_subtasks_description #construct text for file
+    return "Feature: " + feature_id_generator() + " " + feature_name_format() + "\n\n" + dataJIRA_subtasks_description #construct text for file
 
 
 def file_creator():
@@ -67,6 +67,11 @@ def feature_name_format():
     feature_name = dataJIRA_feature[0].upper() + dataJIRA_feature[1:] #makes first letter of feature name uppercase
     feature_name = re.sub(r"(\w)([A-Z])", r"\1 \2", feature_name)
     return feature_name
+
+
+def feature_id_generator():
+    feature_id = dataJIRA_issues['key']
+    return feature_id
 
 
 def branch_creator():
@@ -89,7 +94,7 @@ if dataJIRA["total"] != 0:
 
     e2eText = feature_file_formatter()
 
-    branch_creator()
+    #branch_creator()
 
     file_creator()
 
