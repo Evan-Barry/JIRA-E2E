@@ -8,7 +8,8 @@ import sys
 issue_id = "EEJ-1"  # test placeholder
 issue_name = "helloWorldScreen"
 #issue_id = sys.argv[1] #works with argument passed in
-url = "http://localhost:8090/rest/api/2/search?jql=summary~"  # must get JIRA address from jenkins?
+#issue_name = sys.argv[1] #works with argument passed in
+url_name = "http://localhost:8090/rest/api/2/search?jql=summary~"  # must get JIRA address from jenkins?
 url_id = "http://localhost:8090/rest/api/2/issue/"
 save_path = ""
 headers = {
@@ -22,7 +23,9 @@ def scenario_constructor(k, title, s):
 
 
 def get_api_response():
-    featureURL = url + issue_name
+    featureURL = url_name + issue_name
+    #featureURL = url_id + issue_id
+
     try:
         featureResponse = requests.get(featureURL, headers=headers)
     except requests.exceptions.RequestException as e:
@@ -65,13 +68,9 @@ def feature_name_format():
     feature_name = re.sub(r"(\w)([A-Z])", r"\1 \2", feature_name)
     return feature_name
 
+
 def branch_creator():
     subprocess.run(["git", "checkout", "-b", dataJIRA_feature])
-
-
-def branch_push():
-    subprocess.run(["git", "push", "--set-upstream", "origin", dataJIRA_feature])
-
 
 
 dataJIRA = get_api_response() #converts text to JSON
@@ -86,15 +85,13 @@ if dataJIRA["total"] != 0:
     dataJIRA_subtasks_description = "" #create empty string to hold scenarios
 
     for task in dataJIRA_subtasks: #for every scenario in a feature
-         dataJIRA_subtasks_description += retrieve_scenario_text()
+        dataJIRA_subtasks_description += retrieve_scenario_text()
 
     e2eText = feature_file_formatter()
 
     branch_creator()
 
     file_creator()
-
-    #branch_push()
 
 else:
     print("No features found for ", issue_name)
