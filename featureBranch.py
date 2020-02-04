@@ -29,5 +29,5 @@ feature_title = get_feature_name()
 
 subprocess.run(["git", "checkout", "-b", feature_title])
 
-#print(feature_title)ergerg
+#print(feature_title)ergergfgh
 
