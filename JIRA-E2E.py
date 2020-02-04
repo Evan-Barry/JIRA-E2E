@@ -5,8 +5,8 @@ import requests
 import json
 import sys
 
-issue_id = "EEJ-1"  # test placeholder
-issue_name = "helloWorldScreen"
+issue_id = "EEJ-6"  # test placeholder
+issue_name = "feature2"
 #issue_id = sys.argv[1] #works with argument passed in
 #issue_name = sys.argv[1] #works with argument passed in
 url_name = "http://localhost:8090/rest/api/2/search?maxResults=1&jql=summary~"  # must get JIRA address from jenkins?
@@ -94,7 +94,7 @@ if dataJIRA["total"] != 0:
 
     e2eText = feature_file_formatter()
 
-    #branch_creator()
+    branch_creator()
 
     file_creator()
 
