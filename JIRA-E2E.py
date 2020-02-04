@@ -9,7 +9,7 @@ issue_id = "EEJ-1"  # test placeholder
 issue_name = "helloWorldScreen"
 #issue_id = sys.argv[1] #works with argument passed in
 #issue_name = sys.argv[1] #works with argument passed in
-url_name = "http://localhost:8090/rest/api/2/search?jql=summary~"  # must get JIRA address from jenkins?
+url_name = "http://localhost:8090/rest/api/2/search?maxResults=1&jql=summary~"  # must get JIRA address from jenkins?
 url_id = "http://localhost:8090/rest/api/2/issue/"
 save_path = ""
 headers = {
