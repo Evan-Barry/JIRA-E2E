@@ -1,6 +1,6 @@
 import os
 import re
-
+import subprocess
 import requests
 import json
 import sys
@@ -66,7 +66,12 @@ def feature_name_format():
     return feature_name
 
 def branch_creator():
-    os.system("featureBranch.py")
+    subprocess.run(["git", "checkout", "-b", dataJIRA_feature])
+
+
+def branch_push():
+    subprocess.run(["git", "push", "--set-upstream", "origin", dataJIRA_feature])
+
 
 
 dataJIRA = get_api_response() #converts text to JSON
@@ -85,9 +90,11 @@ if dataJIRA["total"] != 0:
 
     e2eText = feature_file_formatter()
 
+    branch_creator()
+
     file_creator()
 
-    branch_creator()
+    #branch_push()
 
 else:
     print("No features found for ", issue_name)
