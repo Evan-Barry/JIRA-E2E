@@ -1,4 +1,4 @@
-FROM python:3.6-slim
+FROM python:latest
 USER root
 RUN apt-get update
 RUN apt-get install -y python-pip
