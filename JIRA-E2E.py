@@ -1,15 +1,14 @@
-import os
 import re
 import subprocess
 import requests
 import json
 import sys
 
-issue_id = "EEJ-6"  # test placeholder
-issue_name = "feature2"
+#issue_id = "EEJ-1"  # test placeholder
+issue_name = "helloWorldScreen"
 #issue_id = sys.argv[1] #works with argument passed in
 #issue_name = sys.argv[1] #works with argument passed in
-url_name = "http://localhost:8090/rest/api/2/search?maxResults=1&jql=summary~"  # must get JIRA address from jenkins?
+url_name = "http://localhost:8090/rest/api/2/search?jql=summary~"  # must get JIRA address from jenkins?
 url_id = "http://localhost:8090/rest/api/2/issue/"
 save_path = ""
 headers = {
@@ -65,7 +64,7 @@ def file_creator():
 
 def feature_name_format():
     feature_name = dataJIRA_feature[0].upper() + dataJIRA_feature[1:] #makes first letter of feature name uppercase
-    feature_name = re.sub(r"(\w)([A-Z])", r"\1 \2", feature_name)
+    feature_name = re.sub(r"(\w)([A-Z])", r"\1 \2", feature_name) #add spaces before upper case letters
     return feature_name
 
 
@@ -80,7 +79,11 @@ def branch_creator():
 
 dataJIRA = get_api_response() #converts text to JSON
 if dataJIRA["total"] != 0:
-    dataJIRA_issues = dataJIRA['issues'][0]
+
+    for issue in dataJIRA['issues']:
+        if issue['fields']['issuetype']['id'] == '3':
+            dataJIRA_issues = issue
+
     dataJIRA_fields = dataJIRA_issues['fields']
     dataJIRA_feature = dataJIRA_fields['summary']
     #print(dataJIRA_feature)
@@ -94,7 +97,7 @@ if dataJIRA["total"] != 0:
 
     e2eText = feature_file_formatter()
 
-    branch_creator()
+    #branch_creator()
 
     file_creator()
 
